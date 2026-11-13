@@ -1,0 +1,23 @@
+replicaCount: 1
+env:
+  ENVIRONMENT_NAME: "development"
+  PLATFORM_TEAM: "Platform Engineering Dev Team"
+  RELEASE_VERSION: 1.0.0
+
+
+ingress:
+  enabled: true
+  className: "nginx"
+  hosts:
+    - host: dev.employee-api.local
+      paths:
+        - path: /
+          pathType: Prefix
+
+autoscaling:
+  enabled: true
+
+  minreplicas: 1
+  maxreplicas: 5
+
+  targetCPUUtilizationPercentage: 50

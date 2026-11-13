@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "employee-api.fullname" . }}-config
+  labels:
+    {{- include "employee-api.labels" . | nindent 4 }}
+data:
+  ENVIRONMENT_NAME: {{ .Values.env.ENVIRONMENT_NAME | quote }}
+  PLATFORM_TEAM: {{ .Values.env.PLATFORM_TEAM | quote }}
+  RELEASE_VERSION: {{ .Values.env.RELEASE_VERSION | quote }}
